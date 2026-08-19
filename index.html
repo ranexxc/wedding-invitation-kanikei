@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Приглашение на свадьбу</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marck+Script&family=Playfair+Display:wght@400;500;600&display=swap');
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: #efe7e7;
+      color: #302a2b;
+      font-family: "Playfair Display", serif
+    }
+
+    .page {
+      width: min(100%, 520px);
+      margin: auto;
+      background: #f9eeee;
+      overflow: hidden;
+      box-shadow: 0 0 35px #0001
+    }
+
+    section {
+      position: relative;
+      padding: 34px 24px;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, #ffffff66 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, #ffffff55 0 2px, transparent 3px),
+        linear-gradient(135deg, #f9eeee, #f5e5e8)
+    }
+
+    .hero {
+      padding-top: 54px
+    }
+
+    .script {
+      font-family: "Great Vibes", "Marck Script", cursive;
+      font-size: 48px;
+      line-height: 1.05;
+      font-weight: 400
+    }
+
+    .small-script {
+      font-family: "Great Vibes", "Marck Script", cursive;
+      font-size: 34px
+    }
+
+    .kicker {
+      font-size: 13px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 10px
+    }
+
+    .hero-photo {
+      width: 72%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 48% 48% 43% 43%;
+      display: block;
+      filter: saturate(.8);
+      box-shadow: 0 12px 30px #8c747430
+    }
+
+    .card {
+      background: #fffaf9e8;
+      border: 1px solid #fff;
+      border-radius: 28px;
+      padding: 25px 20px;
+      width: 100%;
+      box-shadow: 0 8px 25px #6b515218
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 1.85;
+      text-align: center
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: #b99b9f;
+      margin: 18px auto
+    }
+
+    .calendar {
+      width: 100%;
+      border-radius: 26px;
+      background: #fffafa;
+      padding: 22px;
+      box-shadow: 0 8px 25px #6b515218
+    }
+
+    .cal-head {
+      text-align: center;
+      font-family: "Great Vibes";
+      font-size: 42px
+    }
+
+    .week,
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      text-align: center
+    }
+
+    .week {
+      font-size: 10px;
+      margin: 14px 0 8px;
+      opacity: .65
+    }
+
+    .days div {
+      padding: 7px 0;
+      font-size: 13px
+    }
+
+    .days .chosen {
+      background: #f36f91;
+      color: #fff;
+      border-radius: 50%
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 18px
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      text-decoration: none;
+      color: #fff;
+      background: #e77d98;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 14px;
+      box-shadow: 0 6px 16px #b75f7830
+    }
+
+    .footer {
+      min-height: 65svh
+    }
+
+    .note {
+      font-size: 13px;
+      opacity: .7;
+      text-align: center
+    }
+
+    @media(max-width:390px) {
+      .script {
+        font-size: 42px
+      }
+
+      .text {
+        font-size: 14px
+      }
+
+      section {
+        padding-left: 18px;
+        padding-right: 18px
+      }
+    }
+
+    .countdown-wrap {
+      width: 100%;
+      margin: 24px 0
+    }
+
+    .countdown-title {
+      text-align: center;
+      font-family: "Great Vibes", "Marck Script", cursive;
+      font-size: 38px;
+      margin-bottom: 14px
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px
+    }
+
+    .time-box {
+      background: #fffaf9;
+      border: 1px solid #fff;
+      border-radius: 18px;
+      padding: 12px 5px;
+      text-align: center;
+      box-shadow: 0 6px 18px #6b515218
+    }
+
+    .time-number {
+      font-size: 25px;
+      line-height: 1.1
+    }
+
+    .time-label {
+      font-size: 9px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .65;
+      margin-top: 5px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading"
+    style="position:fixed;inset:0;background:#f9eeee;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:serif;color:#6d555a">
+    Открываем приглашение…</div>
+  <main class="page">
+
+    <section class="hero" id="top">
+      <div class="kicker">Сүйүү менен сиздерди чакырабыз</div>
+      <div class="script">Урматтуу конок!</div>
+      <div class="divider"></div>
+      <img class="hero-photo" src="images/photo3.PNG" alt="Фото для приглашения">
+      <p class="text">Өмүрдүн эң кооз кездери жүрөктө түбөлүккө сакталат.</p>
+      <div class="buttons">
+        <!-- ЗАМЕНИ ССЫЛКУ НИЖЕ -->
+        <a class="btn" href="#calendar">Күнү</a>
+        <a class="btn" href="#location">Адреси</a>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="script small-script">Каникей кыздыбыз</div>
+      <div class="card">
+        <p class="text">
+          Биз үчүн өзгөчө мааниге ээ болгон унутулгус күндү сиздер менен
+          бирге өткөрүп, кубанычыбызды бөлүшкүбүз келет.
+        </p>
+        <p class="text">
+          Сиздерди майрамыбыздын кадырлуу коногу болууга чын дилден чакырабыз.
+        </p>
+      </div>
+      <img class="hero-photo" style="width:78%;aspect-ratio:1.7; margin-top:22px;border-radius:50%"
+        src="images/photo7.jpg" alt="Фото">
+    </section>
+
+    <section id="countdown">
+      <div class="countdown-wrap">
+        <div class="countdown-title">Биздин жолугушуубузга чейин калды</div>
+        <div class="countdown" aria-label="Обратный отсчёт">
+          <div class="time-box">
+            <div class="time-number" id="days">00</div>
+            <div class="time-label">дней</div>
+          </div>
+          <div class="time-box">
+            <div class="time-number" id="hours">00</div>
+            <div class="time-label">часов</div>
+          </div>
+          <div class="time-box">
+            <div class="time-number" id="minutes">00</div>
+            <div class="time-label">минут</div>
+          </div>
+          <div class="time-box">
+            <div class="time-number" id="seconds">00</div>
+            <div class="time-label">секунд</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar">
+      <div class="calendar">
+        <div class="cal-head">Сентябрь</div>
+        <div class="week">
+          <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+        </div>
+        <div class="days">
+          <div></div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div class="chosen">6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+          <div>13</div>
+          <div>14</div>
+          <div>15</div>
+          <div>16</div>
+          <div>17</div>
+          <div>18</div>
+          <div>19</div>
+          <div>20</div>
+          <div>21</div>
+          <div>22</div>
+          <div>23</div>
+          <div>24</div>
+          <div>25</div>
+          <div>26</div>
+          <div>27</div>
+          <div>28</div>
+          <div>29</div>
+          <div>30</div>
+        </div>
+      </div>
+      <p class="text">Бул өзгөчө күндү сиздер менен бирге өткөрүүгө кубанычта болобуз.</p>
+      <!-- КНОПКА ДОБАВЛЕНИЯ В КАЛЕНДАРЬ: вставь нужную ссылку вместо # -->
+      <a class="btn" href="qyz_uzatu_anekey.ics">Жылнаамага кошуу</a>
+    </section>
+
+    <section id="location">
+      <div class="script">Өткөрүлүүчү жай</div>
+      <div class="card">
+        <p class="text"><strong>«Ак-Бата Гранд» рестораны</strong></p>
+        <p class="text">Адреси: Тумонбая Байзакова проспекти, 175а</p>
+
+        <div style="text-align:center; margin-top:18px;">
+          <a class="btn" href="https://2gis.kg/bishkek/geo/70000001084265609" target="_blank" rel="noopener noreferrer">
+            Картаны ачуу
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="script">Сиздерди күтөбүз!</div>
+      <p class="text">Сураныч, келериңизди ырастаңыз.</p>
+
+      <a class="btn" href="https://17315623-1672224.renderforestsites.com/" target="_blank" rel="noopener noreferrer">
+        Катышууңузду ырастаңыз
+      </a>
+
+      <p class="note">Сайт-приглашение · inst @ranexxc</p>
+    </section>
+
+  </main>
+
+  <script>
+    const weddingDate = new Date("2026-09-06T16:00:00+06:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      let distance = weddingDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / 86400000);
+      distance %= 86400000;
+      const hours = Math.floor(distance / 3600000);
+      distance %= 3600000;
+      const minutes = Math.floor(distance / 60000);
+      const seconds = Math.floor((distance % 60000) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, "0");
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+  <script>
+    window.addEventListener("load", () => {
+      const l = document.getElementById("loading");
+      if (l) l.style.display = "none";
+    });
+  </script>
+</body>
+
+</html>
